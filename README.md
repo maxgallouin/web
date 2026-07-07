@@ -2,6 +2,9 @@
 
 Site GitHub Pages / Jekyll pour les accueils de jour du Diocèse Aix-Arles.
 
+La page d'accueil se trouve dans `index.html` et les styles dans
+`assets/css/style.css`.
+
 ## Aperçu local
 
 Depuis la racine du projet :
