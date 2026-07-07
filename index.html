@@ -1,1 +1,401 @@
-<h1>Bienvenue sur le site des accueils de jour du Diocèse Aix-Arles</h1>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Bienvenue sur le site des accueils de jour du Diocèse Aix-Arles."
+    >
+    <title>Accueils de jour du Diocèse Aix-Arles</title>
+    <style>
+      :root {
+        --ink: #17324d;
+        --muted: #5f6f7d;
+        --paper: #fffaf0;
+        --surface: #ffffff;
+        --blue: #315f8c;
+        --green: #5f8268;
+        --gold: #d8a84f;
+        --line: rgba(23, 50, 77, 0.14);
+        --shadow: 0 24px 70px rgba(23, 50, 77, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          linear-gradient(115deg, rgba(255, 250, 240, 0.95), rgba(239, 247, 241, 0.92)),
+          linear-gradient(180deg, #f7efe0 0%, #edf5f1 100%);
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background-image:
+          linear-gradient(rgba(49, 95, 140, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(49, 95, 140, 0.07) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 14px 0 34px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-weight: 700;
+        background: var(--blue);
+        border-radius: 8px;
+        box-shadow: 0 12px 24px rgba(49, 95, 140, 0.22);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        gap: 42px;
+        align-items: center;
+        min-height: 620px;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.95rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 650px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.08rem, 2vw, 1.32rem);
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        color: #ffffff;
+        font-weight: 750;
+        text-decoration: none;
+        background: var(--blue);
+        border: 1px solid var(--blue);
+        border-radius: 8px;
+        box-shadow: 0 14px 28px rgba(49, 95, 140, 0.2);
+      }
+
+      .button.secondary {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.64);
+        border-color: var(--line);
+        box-shadow: none;
+      }
+
+      .visual {
+        position: relative;
+        min-height: 460px;
+        overflow: hidden;
+        background:
+          linear-gradient(155deg, rgba(255, 255, 255, 0.9), rgba(232, 242, 235, 0.86)),
+          var(--surface);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .sun {
+        position: absolute;
+        top: 44px;
+        right: 52px;
+        width: 112px;
+        height: 112px;
+        background: var(--gold);
+        border-radius: 50%;
+        box-shadow: 0 0 0 18px rgba(216, 168, 79, 0.14);
+      }
+
+      .arch {
+        position: absolute;
+        right: 58px;
+        bottom: 0;
+        width: 260px;
+        height: 330px;
+        border: 26px solid rgba(49, 95, 140, 0.22);
+        border-bottom: 0;
+        border-radius: 150px 150px 0 0;
+      }
+
+      .arch::after {
+        position: absolute;
+        right: 44px;
+        bottom: 0;
+        width: 118px;
+        height: 214px;
+        content: "";
+        border: 18px solid rgba(95, 130, 104, 0.32);
+        border-bottom: 0;
+        border-radius: 80px 80px 0 0;
+      }
+
+      .welcome-note {
+        position: absolute;
+        left: 28px;
+        bottom: 28px;
+        width: min(300px, calc(100% - 56px));
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        backdrop-filter: blur(12px);
+      }
+
+      .welcome-note strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.15rem;
+      }
+
+      .welcome-note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .support {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .support-card,
+      .info-band {
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .support-card {
+        padding: 24px;
+      }
+
+      .support-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.12rem;
+        letter-spacing: 0;
+      }
+
+      .support-card p,
+      .info-band p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .info-band {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 28px;
+        margin-top: 16px;
+        padding: 28px;
+      }
+
+      .info-band h2 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      @media (max-width: 840px) {
+        .site-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero,
+        .info-band {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          gap: 28px;
+          min-height: auto;
+        }
+
+        .visual {
+          min-height: 360px;
+        }
+
+        .support {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 24px, 1120px);
+          padding-top: 20px;
+        }
+
+        h1 {
+          font-size: clamp(2.55rem, 16vw, 4rem);
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .visual {
+          min-height: 320px;
+        }
+
+        .sun {
+          right: 28px;
+          width: 88px;
+          height: 88px;
+        }
+
+        .arch {
+          right: 20px;
+          width: 220px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="site-header" aria-label="En-tête du site">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>Diocèse Aix-Arles</span>
+        </div>
+        <p class="eyebrow">Accueils de jour</p>
+      </header>
+
+      <section class="hero" aria-labelledby="welcome-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Un lieu pour souffler, parler, repartir</p>
+          <h1 id="welcome-title">Bienvenue aux accueils de jour</h1>
+          <p class="lead">
+            Dans le Diocèse Aix-Arles, les accueils de jour offrent une présence
+            simple et fraternelle aux personnes qui cherchent un espace de repos,
+            d'écoute et d'orientation.
+          </p>
+          <div class="actions" aria-label="Actions principales">
+            <a class="button" href="#accueil">Découvrir l'accueil</a>
+            <a class="button secondary" href="#informations">Informations utiles</a>
+          </div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <span class="sun"></span>
+          <span class="arch"></span>
+          <div class="welcome-note">
+            <strong>Une porte ouverte</strong>
+            <p>Un café, un sourire, une conversation et des repères pour la journée.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="accueil" class="support" aria-label="Ce que proposent les accueils">
+        <article class="support-card">
+          <h2>Accueil</h2>
+          <p>
+            Un espace calme pour se poser, reprendre des forces et être reçu
+            avec respect.
+          </p>
+        </article>
+        <article class="support-card">
+          <h2>Écoute</h2>
+          <p>
+            Une présence attentive pour partager une difficulté, une question ou
+            simplement un moment.
+          </p>
+        </article>
+        <article class="support-card">
+          <h2>Orientation</h2>
+          <p>
+            Des informations pratiques pour avancer vers les services et les
+            relais adaptés.
+          </p>
+        </article>
+      </section>
+
+      <section id="informations" class="info-band" aria-labelledby="info-title">
+        <h2 id="info-title">Des lieux de rencontre au cœur des paroisses</h2>
+        <p>
+          Les accueils de jour du Diocèse Aix-Arles s'inscrivent dans une
+          mission de proximité. Ils accueillent chacun avec discrétion, dans un
+          esprit de fraternité, d'attention et d'espérance.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
